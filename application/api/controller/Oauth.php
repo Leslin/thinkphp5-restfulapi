@@ -9,7 +9,7 @@ use think\Request;
 use think\Db;
 use think\Cache;
 
-class OAuth
+class Oauth
 {
     use Send;
     

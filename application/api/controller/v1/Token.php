@@ -61,7 +61,7 @@ class Token extends Controller
 		//检测appkey
 		$this->checkAppkey(self::$rule_mobile);
 		//获取短信验证码
-		if(empty($this->request->param('captcha'))){
+		if(!empty($this->request->param('captcha'))){
 			//$sms = Factory::getInstance(\app\api\controller\Sms::class);
 			//$code = $sms->getMobileCode($this->request->param('mobilephone')); 
 			//return $this->returnmsg(200,'success',['code'=>$code]);
@@ -126,8 +126,8 @@ class Token extends Controller
 	 */
 	public function checkSign()
 	{	
-		$baseAuth = Factory::getInstance(\app\api\controller\OAuth::class);
-		$app_secret = OAuth::get(['app_key' => $this->request->param('app_key')]);
+		$baseAuth = Factory::getInstance(\app\api\controller\Oauth::class);
+		$app_secret = Oauth::get(['app_key' => $this->request->param('app_key')]);
     	$sign = $baseAuth->makesign($this->request->param(),$app_secret['app_secret']);     //生成签名
     	if($sign !== $this->request->param['signature']){
     		return self::returnmsg(401,'Signature error',[],[]);
@@ -145,7 +145,7 @@ class Token extends Controller
         $accessToken = self::buildAccessToken();
         $accessTokenInfo = [
             'access_token' => $accessToken,//访问令牌
-            'expires_time' => time() + OAuth2::$expires,      //过期时间时间戳
+            'expires_time' => time() + Oauth2::$expires,      //过期时间时间戳
             'client' => $clientInfo,//用户信息
         ];
         self::saveAccessToken($accessToken, $accessTokenInfo);
@@ -172,7 +172,7 @@ class Token extends Controller
     protected static function saveAccessToken($accessToken, $accessTokenInfo)
     {
         //存储accessToken
-        Cache::set(OAuth2::$accessTokenPrefix . $accessToken, $accessTokenInfo, OAuth2::$expires);
+        Cache::set(Oauth2::$accessTokenPrefix . $accessToken, $accessTokenInfo, Oauth2::$expires);
 
         //存储用户与信息索引 用于比较,这里涉及到user_id，如果有需要请关掉注释
         //Cache::set(self::$accessTokenAndClientPrefix . $accessTokenInfo['client']['user_id'], $accessToken, self::$expires);

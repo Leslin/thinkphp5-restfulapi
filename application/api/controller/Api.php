@@ -117,7 +117,7 @@ class Api extends Controller
      */
     public function checkAuth()
     {	
-    	$baseAuth = Factory::getInstance(\app\api\controller\OAuth::class);
+    	$baseAuth = Factory::getInstance(\app\api\controller\Oauth::class);
     	$clientInfo = $baseAuth->authenticate();
     	return $clientInfo;
     }
