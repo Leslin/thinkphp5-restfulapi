@@ -95,6 +95,11 @@ www  WEB部署目录（或者子目录）
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/token.png)
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/token2.png)
 
+- 测试
+
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test1.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test2.png)
+
 ## 快速创建一个restful控制器
 
 cd 到项目根目录
