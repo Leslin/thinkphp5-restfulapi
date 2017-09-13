@@ -76,18 +76,19 @@ www  WEB部署目录（或者子目录）
 -  写的比较乱，直接看片段截图把。。。。
 ## 相关流程截图
 - 用户类
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/user.png
+
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/user.png)
 
 - Api类
 
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api1.png
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api2.png
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api3.png
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api1.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api2.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api3.png)
 
 - Oauth类
 
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth.png
-https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth2.png
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth2.png)
 
 ## 快速创建一个restful控制器
 
