@@ -111,7 +111,7 @@ class Token extends Controller
 		if(true !== $result){
 			return $this->returnmsg(405,$result);
 		}
-        //====调用模型验证appid是否正确，这里注释，请开发者自行建表======
+        //====调用模型验证app_key是否正确，这里注释，请开发者自行建表======
 		// $result = Oauth::get(function($query){
 		// 	$query->where('app_key', $this->request->param('app_key'));
 		// 	$query->where('expires_in','>' ,time());
