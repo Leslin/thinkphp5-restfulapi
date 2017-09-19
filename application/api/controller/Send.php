@@ -97,6 +97,7 @@ trait Send
     }
 
     /**
+     * 如果需要允许跨域请求，请在记录处理跨域options请求问题，并且返回200，以便后续请求，这里需要返回几个头部。。
      * @param code 状态码
      * @param message 返回信息
      * @param data 返回信息
