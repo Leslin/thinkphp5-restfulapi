@@ -63,10 +63,8 @@ class Api extends Controller
      * REST允许输出的资源类型列表
      * @var array
      */
-    protected $restOutputType = [ //
-        //'xml' => 'application/xml',
+    protected $restOutputType = [ 
         'json' => 'application/json',
-        //'jsonp' => 'application/jsonp',
     ];
 
     /**
