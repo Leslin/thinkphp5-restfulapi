@@ -104,7 +104,7 @@ www  WEB部署目录（或者子目录）
 
 cd 到项目根目录
 
-命令行 ：php think make:controller api/controller/v1/Goods
+命令行 ：php think make:controller api/v1/Goods
 
 修改路由，注册一个资源路由：在route.php加入下面一行代码：
 Route::resource(':version/goods','api/:version.Goods'); 
