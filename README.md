@@ -75,6 +75,13 @@ www  WEB部署目录（或者子目录）
 -  生成access_token，缓存access_token等相关逻辑在v1/Token.php代码中，使用的是本地缓存，如果需要使用数据库或者redis请查询相关注释说明
 -  写的比较乱，直接看片段截图把。。。。
 ## 相关流程截图
+
+###流程图
+
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/accesstoken.png)
+
+### 截图
+
 - 用户类
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/user.png)
