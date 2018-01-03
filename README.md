@@ -76,7 +76,7 @@ www  WEB部署目录（或者子目录）
 -  写的比较乱，直接看片段截图把。。。。
 ## 相关流程截图
 
-###流程图
+### 流程图
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/accesstoken.png)
 
