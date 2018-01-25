@@ -74,16 +74,6 @@ class Oauth
         $request = Request::instance();
         //获取头部信息
         try {
-            //========关键信息在头部传入例如key，用户信息，token等，这里不用这种方式请求验证==============
-            // $authorization = $request->header('authorization');
-            // $authorization = explode(" ", base64_decode($authorization));
-            // $authorization = explode(':', $authorization[1]);
-            // $app_key = $authorization[0];
-            // $access_token = $authorization[1];
-            // $user_id = $authorization[2];//$_SERVER['PHP_AUTH_USER']
-            // $clientInfo['user_id'] = $user_id;
-            // $clientInfo['app_key'] = $app_key;
-            // $clientInfo['access_token'] = $access_token;
             $clientInfo = $request->param();
         } catch (Exception $e) {
             return $this->returnmsg(402,$e.'Invalid authentication credentials');
