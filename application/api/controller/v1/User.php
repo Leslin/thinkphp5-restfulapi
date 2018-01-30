@@ -13,7 +13,6 @@ use app\api\controller\UnauthorizedException;
  * 基类控制器提供了基础的验证，包含app_token,请求时间，请求是否合法的一系列的验证
  * 在所有子类中可以调用$this->clientInfo对象访问请求客户端信息，返回为一个数组
  * 在具体资源方法中，不需要再依赖注入，直接调用$this->request返回为请具体信息的一个对象
- * date:2017-07-25
  */
 class User extends Api
 {   
