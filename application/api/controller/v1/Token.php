@@ -14,6 +14,7 @@ use app\api\controller\Oauth as Oauth2;
 use app\api\model\Oauth as Oauth;
 use think\Db;
 use think\Cache;
+use app\api\controller\Factory;
 class Token extends Controller
 {	
 	use Send;
