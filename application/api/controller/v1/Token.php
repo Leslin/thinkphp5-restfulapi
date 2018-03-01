@@ -130,7 +130,7 @@ class Token extends Controller
 		$baseAuth = Factory::getInstance(\app\api\controller\Oauth::class);
 		$app_secret = Oauth::get(['app_key' => $this->request->param('app_key')]);
     	$sign = $baseAuth->makesign($this->request->param(),$app_secret['app_secret']);     //生成签名
-    	if($sign !== $this->request->param['signature']){
+    	if($sign !== $this->request->param('signature')){
     		return self::returnmsg(401,'Signature error',[],[]);
     	}
 	}
