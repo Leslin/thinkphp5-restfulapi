@@ -80,7 +80,9 @@ class User extends Api
         return 'delete';
     }
 
-   
+    /**
+     * 获取除资源方法外的方法
+     */
     public function fans($id)
     {
         return $id;
