@@ -95,14 +95,6 @@ class Token extends Controller
 	}
 
 	/**
-	 * 检查微信用户是否真实
-	 */
-	public function checkWechat()
-	{
-		#todo
-	}
-
-	/**
 	 * 检测appkey的有效性
 	 * @param 验证规则数组
 	 */
