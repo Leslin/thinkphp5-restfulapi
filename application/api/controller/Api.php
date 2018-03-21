@@ -106,7 +106,7 @@ class Api extends Controller
         $this->method = $method;
         if (false === stripos($this->restMethodList, $method)) {
 
-          return self::returnmsg(405,'Method Not Allowed',[],["Access-Control-Allow-Origin" => $this->restMethodList]);
+          return self::returnmsg(405,'Method Not Allowed',[],["access-control-request-method" => $this->restMethodList]);
         }
     }
 
