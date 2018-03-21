@@ -78,7 +78,7 @@ class Token extends Controller
 					$this->sendError(500, 'server error!!', 500);
 				}
 			}else{
-				return $this->returnmsg(401,'mobilephone is not bind');
+				return $this->returnmsg(401,'user is null');
 			}
 		}
 	}
