@@ -103,7 +103,7 @@ class Oauth
         }
         if($getCacheAccessToken['client']['app_key'] != $data['app_key']){
 
-            return $this->returnmsg(402,'App_token does not match app_key');  //app_key与缓存中的appkey不匹配
+            return $this->returnmsg(402,'App_token does not match app_key');  // app_key与缓存中的appkey不匹配
         }
 
         return true;
