@@ -14,7 +14,7 @@ class Oauth
     use Send;
     
     /**
-     * accessToken存储前缀
+     * accessToken存储前缀  
      *
      * @var string
      */
