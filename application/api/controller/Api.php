@@ -87,7 +87,7 @@ class Api extends Controller
      * 检测请求类型，数据格式等操作
      */
     public function init()
-    {
+    { 
     	// 资源类型检测
         $request = Request::instance();
         $ext = $request->ext();
