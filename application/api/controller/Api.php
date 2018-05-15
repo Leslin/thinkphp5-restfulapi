@@ -36,7 +36,7 @@ class Api extends Controller
      */
     public $restMethodList = 'get|post|put|delete|patch|head|options';
     /**
-     * 默认不验证
+     * 默认不验证 
      * @var bool
      */
     public $apiAuth = false;
