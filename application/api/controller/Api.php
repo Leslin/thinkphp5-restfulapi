@@ -112,7 +112,7 @@ class Api extends Controller
     }
 
     /**
-     * 检测客户端是否有权限调用接口
+     * 检测客户端是否有权限调用接口 
      */
     public function checkAuth()
     {	
