@@ -78,7 +78,7 @@ class Api extends Controller
     {	
     	$request = Request::instance();
     	$this->request = $request;
-        $this->init();    //请求方法检查
+        $this->init();    //请求方法检查 
         $this->clientInfo = $this->checkAuth();  //接口权限检查 
     } 
 
