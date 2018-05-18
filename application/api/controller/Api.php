@@ -83,7 +83,7 @@ class Api extends Controller
     } 
 
     /**
-     * 初始化方法
+     * 初始化方法 
      * 检测请求类型，数据格式等操作
      */
     public function init()
