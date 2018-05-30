@@ -95,7 +95,7 @@ class Api extends Controller
             // 自动检测资源类型
             $this->type = $request->type();
         } elseif (!preg_match('/\(' . $this->restTypeList . '\)$/i', $ext)) {
-            // 资源类型非法 则用默认资源类型访问
+            // 资源类型非法 则用默认资源类型访问 
             $this->type = $this->restDefaultType;
         } else {
             $this->type = $ext;
