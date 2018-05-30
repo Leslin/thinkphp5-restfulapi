@@ -122,7 +122,7 @@ class Api extends Controller
     }
     /**
      * 空操作
-     * 404
+     * 404 
      * @return \think\Response|\think\response\Json|\think\response\Jsonp|\think\response\Xml
      */
     public function _empty()
