@@ -31,7 +31,7 @@ class Api extends Controller
         'options' => 'options',
     ];
     /**
-     * 允许访问的请求类型
+     *  允许访问的请求类型
      * @var string
      */
     public $restMethodList = 'get|post|put|delete|patch|head|options';
