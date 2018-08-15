@@ -7,6 +7,8 @@ ThinkPHP5 restfulapi
 
 详细开发文档参考 [ThinkPHP5完全开发手册](http://www.kancloud.cn/manual/thinkphp5)
 
+
+## 目前正在开发thinkphp5.1相关版本，适用于5.0*版本以及发布到releases，新版本提交后，老版本继续维护，有需要帮助的可以进群交流。
 ## 目录结构
 
 初始的目录结构如下：
