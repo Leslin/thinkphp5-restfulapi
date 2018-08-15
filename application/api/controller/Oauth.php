@@ -1,45 +1,32 @@
 <?php
-
 namespace app\api\controller;
 
-use app\api\controller\UnauthorizedException;
 use app\api\controller\Send;
 use think\Exception;
-use think\Request;
-use think\Db;
-use think\Cache;
+use think\facade\Request;
+use think\facade\Cache;
 
+/**
+ * API鉴权验证
+ */
 class Oauth
 {
     use Send;
     
     /**
-     * accessToken存储前缀  
+     * accessToken存储前缀
      *
      * @var string
      */
     public static $accessTokenPrefix = 'accessToken_';
 
     /**
-     * accessTokenAndClientPrefix存储前缀
-     *
-     * @var string
-     */
-    public static $accessTokenAndClientPrefix = 'accessTokenAndClient_';
-
-    /**
      * 过期时间秒数
      *
      * @var int
      */
-    public static $expires = 72000;
+    public static $expires = 7200;
 
-    /**
-     * 客户端信息
-     *
-     * @var
-     */
-    public $clientInfo;
     /**
      * 认证授权 通过用户信息和路由
      * @param Request $request
@@ -48,19 +35,7 @@ class Oauth
      */
     final function authenticate()
     {      
-
-        $request = Request::instance();
-
-        try {
-            //验证授权
-            $clientInfo = $this->getClient();
-            $checkclient = $this->certification($clientInfo);
-            if($checkclient){
-                return $clientInfo;
-            }
-        } catch (Exception $e) {
-            return $this->returnmsg(402,'Invalid1 authentication credentials.');
-        }
+        return self::certification(self::getClient());
     }
 
     /**
@@ -69,69 +44,54 @@ class Oauth
      * @return $this
      * @throws UnauthorizedException
      */
-    public function getClient()
+    public static function getClient()
     {   
-        $request = Request::instance();
         //获取头部信息
         try {
-            $clientInfo = $request->param();
+            $authorization = Request::header('authentication');   //tp5.1Facade调用 获取头部字段
+            $authorization = explode(" ", $authorization);  //authorization：USERID xxxx
+            $authorizationInfo  = explode(":", base64_decode($authorization[1]));
+            $clientInfo['uid'] = $authorizationInfo[2];
+            $clientInfo['appid'] = $authorizationInfo[0];
+            $clientInfo['access_token'] = $authorizationInfo[1];
+            return $clientInfo;
         } catch (Exception $e) {
-            return $this->returnmsg(402,$e.'Invalid authentication credentials');
+            return self::returnMsg(401,'Invalid authorization credentials',Request::header(''));
         }
-        return $clientInfo;
     }
 
     /**
      * 获取用户信息后 验证权限
      * @return mixed
      */
-    public function certification($data = []){
-        //======下面注释部分是数据库验证access_token是否有效，示例为缓存中验证======
-        // $time = date("Y-m-d H:i:s",time());
-        // $checkclient = Db::name('tb_token')->field('end_time')->where('user_id',$data['user_id'])->where('app_key',$data['app_key'])->where('app_token',$data['access_token'])->find();
-        // if(empty($checkclient)){
-        //     return $this->returnmsg(402,'App_token does not match app_key');
-        // }
-        // if($checkclient <= $time){
-        //     return $this->returnmsg(402,'Access_token expired');
-        // }
-        // return true;
+    public static function certification($data = []){
 
         $getCacheAccessToken = Cache::get(self::$accessTokenPrefix . $data['access_token']);  //获取缓存access_token
         if(!$getCacheAccessToken){
-            return $this->returnmsg(402,'Access_token expired or error！');
+            return self::returnMsg(401,'fail',"access_token不存在或为空");
         }
-        if($getCacheAccessToken['client']['app_key'] != $data['app_key']){
+        if($getCacheAccessToken['client']['appid'] !== $data['appid']){
 
-            return $this->returnmsg(402,'App_token does not match app_key');  // app_key与缓存中的appkey不匹配
+            return self::returnMsg(401,'fail',"appid错误");  //appid与缓存中的appid不匹配
         }
-
-        return true;
+        return $data;
     }
 
     /**
      * 生成签名
      * _字符开头的变量不参与签名
      */
-    public function makeSign ($data = [],$app_secret = '')
+    public static function makeSign ($data = [],$app_secret = '')
     {   
         unset($data['version']);
-        unset($data['signature']);
-        foreach ($data as $k => $v) {
-            
-            if(substr($data[$k],0,1) == '_'){
-
-                unset($data[$k]);
-            }
-        }
-        dump($data);
-        return $this->_getOrderMd5($data,$app_secret);
+        unset($data['sign']);
+        return self::_getOrderMd5($data,$app_secret);
     }
 
     /**
      * 计算ORDER的MD5签名
      */
-    private function _getOrderMd5($params = [] , $app_secret = '') {
+    private static function _getOrderMd5($params = [] , $app_secret = '') {
         ksort($params);
         $params['key'] = $app_secret;
         return strtolower(md5(urldecode(http_build_query($params))));
