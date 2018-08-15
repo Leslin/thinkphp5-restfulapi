@@ -39,8 +39,9 @@ class Token
 		}
 		self::checkParams(input(''));  //参数校验
 		//数据库已经有一个用户,这里需要根据input('mobile')去数据库查找有没有这个用户
+		input('uid') = 1; //虚拟一个uid返回给调用方
 		try {
-			$accessToken = self::setAccessToken(input(''));
+			$accessToken = self::setAccessToken(input(''));  //传入参数应该是根据手机号查询改用户的数据
 			return self::returnMsg(200,'success',$accessToken);
 		} catch (Exception $e) {
 			return self::returnMsg(500,'fail',$e);
