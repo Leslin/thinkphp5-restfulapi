@@ -78,7 +78,7 @@ www  WEB部署目录（或者子目录）
 -  根据用户端传递过来的app_key获取缓存中的access_token，在进行对比，如果true，则可以调用user中的各种方法，否则返回不能调用原因
 -  Oauth类中的具体请看代码
 -  生成access_token，缓存access_token等相关逻辑在v1/Token.php代码中，使用的是本地缓存，如果需要使用数据库或者redis请查询相关注释说明
--  api端请求需要在header中进行authentication字段拼接，拼接跪着authentication:USERID base64_encode(appid:accesstoken:uid)
+-  api端请求需要在header中进行authentication字段拼接，拼接规则：authentication:USERID base64_encode(appid:accesstoken:uid)
 -  uid 就是请求生成token时候返回
 ## 相关流程截图
 
