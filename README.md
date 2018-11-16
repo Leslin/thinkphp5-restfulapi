@@ -79,6 +79,7 @@ www  WEB部署目录（或者子目录）==
 -  Oauth类中的具体请看代码
 -  生成access_token，缓存access_token等相关逻辑在v1/Token.php代码中，使用的是本地缓存，如果需要使用数据库或者redis请查询相关注释说明
 -  api端请求需要在header中进行authentication字段拼接，拼接规则：authentication:USERID base64_encode(appid:accesstoken:uid)
+PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVpqTXM3a2Y6Mzgw ，其中USERID后面跟了个空格，空格后面的一串字符串就是appid:accesstoken:uid这几个参数base64_encode后的字符串
 -  uid 就是请求生成token时候返回
 ## 相关流程截图
 
