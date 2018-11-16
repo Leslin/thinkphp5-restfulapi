@@ -114,6 +114,8 @@ PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVp
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test1.png)
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test2.png)
 
+- 正确的请求头
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/WX20181116-145924@2x.png)
 ## 快速创建一个restful控制器
 
 cd 到项目根目录
