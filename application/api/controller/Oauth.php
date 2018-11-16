@@ -48,7 +48,7 @@ class Oauth
     {   
         //获取头部信息
         try {
-            $authorization = Request::header('authentication');   //tp5.1Facade调用 获取头部字段
+            $authorization = Request::header('authentication');   //获取请求中的authentication字段，值形式为USERID asdsajh..这种形式
             $authorization = explode(" ", $authorization);  //authorization：USERID xxxx
             $authorizationInfo  = explode(":", base64_decode($authorization[1]));
             $clientInfo['uid'] = $authorizationInfo[2];
