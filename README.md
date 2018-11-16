@@ -83,6 +83,8 @@ PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVp
 -  uid 就是请求生成token时候返回
 ## 相关流程截图
 
+### 不知道header怎么传，请查看文档最后一张图，如果对参数不明白，请查看代码/Application/api/controller/Oauth.php中getClient方法，里面有逆向解密authentication值。
+
 ### 流程图
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/accesstoken.png)
