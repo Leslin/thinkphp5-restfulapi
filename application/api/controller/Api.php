@@ -51,6 +51,9 @@ class Api
 
 	}
 
+	/**
+	 * 空方法
+	 */
 	public function _empty()
     {
         return self::returnMsg(404, 'empty method!');
