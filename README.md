@@ -71,19 +71,29 @@ www  WEB部署目录（或者子目录）==
 ## 流程
 
 -  router.php中定义了restful资源路由，具体请查看代码。
+
 -  访问相应的url，例如：http://localhost/tp5test/public/index.php/v1/user
+
 -  user控制器是继承了Api类
+
 -  在Api类中，会有方法checkAuth()检测用户是否有权限调用接口
+
 -  checkAuth方法会调用Oauth类中的鉴权，$baseAuth = Factory::getInstance(\app\api\controller\OAuth::class);
+
 -  根据用户端传递过来的app_key获取缓存中的access_token，在进行对比，如果true，则可以调用user中的各种方法，否则返回不能调用原因
+
 -  Oauth类中的具体请看代码
+
 -  生成access_token，缓存access_token等相关逻辑在v1/Token.php代码中，使用的是本地缓存，如果需要使用数据库或者redis请查询相关注释说明
+
 -  api端请求需要在header中进行authentication字段拼接，拼接规则：authentication:USERID base64_encode(appid:accesstoken:uid)
 PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVpqTXM3a2Y6Mzgw ，其中USERID后面跟了个空格，空格后面的一串字符串就是appid:accesstoken:uid这几个参数base64_encode后的字符串
+
 -  uid 就是请求生成token时候返回
-## 相关流程截图
 
 ### 不知道header怎么传，请查看文档最后一张图，如果对参数不明白，请查看代码/Application/api/controller/Oauth.php中getClient方法，里面有逆向解密authentication值。
+
+## 相关流程截图
 
 ### 流程图
 
