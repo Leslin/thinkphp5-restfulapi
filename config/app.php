@@ -142,9 +142,4 @@ return [
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '\\app\\api\\exception\\ExceptionHandler',
-    //某些方法不需要使用接口鉴权，一些公共类方法
-    'allow_method'=>[
-        'V1.User/index/get',   //post方法允许直接访问
-    ]
-
 ];

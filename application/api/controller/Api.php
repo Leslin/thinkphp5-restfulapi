@@ -19,6 +19,11 @@ class Api
 
     protected $clientInfo;
 
+    /**
+     * 不需要鉴权方法
+     */
+    protected $noAuth = [];
+
 	/**
 	 * 构造方法
 	 * @param Request $request Request对象

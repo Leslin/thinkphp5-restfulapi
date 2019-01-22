@@ -7,7 +7,14 @@ use think\Request;
 use app\api\controller\Api;
 
 class User extends Api
-{
+{   
+    /**
+     * 不需要鉴权方法
+     * * 表示全部不需要授权
+     * ['index','save']
+     */
+    protected $noAuth = [];
+    
     /**
      * 显示资源列表
      *
