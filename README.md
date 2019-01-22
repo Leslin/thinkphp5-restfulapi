@@ -8,7 +8,7 @@ ThinkPHP5.1* restfulapi
 详细开发文档参考 [ThinkPHP5完全开发手册](https://www.kancloud.cn/manual/thinkphp5_1/353946)
 
 
-## 使用目前tp5.1相关新增功能，包含容器依赖注入、Facade、验证器等，与上一个版本相比，简化代码量，整个代码量只有不到200行，增加鉴权白名单，refresh_token等
+## 使用目前tp5.1相关新增功能，包含容器依赖注入、Facade、验证器等，与上一个版本相比，简化代码量，整个代码量只有不到200行，增加鉴权白名单，refresh_token、全局异常处理等
 ## 欢迎PR
 ## 老版本tp5.0*相关代码请到release下载对应代码
 
@@ -27,6 +27,7 @@ www  WEB部署目录（或者子目录）==
 │  │  ├─Api.php         授权基类
 │  │  ├─Oauth.php       授权验证
 │  │  ├─Send.php        返回格式
+|  |  |─exception       重写异常
 │  │  ├─model           模型目录
 |  |      ├─model     
 │  │  ├─view            视图目录
@@ -38,7 +39,8 @@ www  WEB部署目录（或者子目录）==
 │  ├─route.php          路由配置文件
 │  ├─tags.php           应用行为扩展定义文件
 │  └─database.php       数据库配置文件
-│
+|─config                配置文件
+|-routte                路由文件
 ├─public                WEB目录（对外访问目录）
 │  ├─index.php          入口文件
 │  ├─router.php         快速测试文件
@@ -76,9 +78,9 @@ www  WEB部署目录（或者子目录）==
 
 -  user控制器是继承了Api类
 
--  在Api类中，会有方法checkAuth()检测用户是否有权限调用接口
+-  在Api类中，会有方法init()检测用户是否有权限调用接口
 
--  checkAuth方法会调用Oauth类中的鉴权，$baseAuth = Factory::getInstance(\app\api\controller\OAuth::class);
+-  init方法会调用Oauth类中的鉴权，$oauth = app('app\api\controller\Oauth');;
 
 -  根据用户端传递过来的app_key获取缓存中的access_token，在进行对比，如果true，则可以调用user中的各种方法，否则返回不能调用原因
 
@@ -101,33 +103,36 @@ PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVp
 
 ### 截图
 
-- 用户类
+- 路由设置 route\route.php
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/user.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/route.png)
 
 - Api类
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api1.png)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api2.png)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api3.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api.png)
 
 - Oauth类
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth.png)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth2.png)
 
 - v1/Token类
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/token.png)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/token2.png)
 
-- 测试
+### 截图
+### 1、获取token传参
 
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test1.png)
+
+### 1、获取token、刷新的token，过期时间，用户信息
 ![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test2.png)
 
-- 正确的请求头
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/WX20181116-145924@2x.png)
+
+### 3、传递token进行请求
+- 加密头规则：USERID base64_encode(appid:token:uid)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test3.png)
+
+
 ## 快速创建一个restful控制器
 
 cd 到项目根目录

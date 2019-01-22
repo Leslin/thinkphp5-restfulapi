@@ -10,8 +10,10 @@ class User extends Api
 {   
     /**
      * 不需要鉴权方法
-     * * 表示全部不需要授权
+     * index、save不需要鉴权
      * ['index','save']
+     * 所有方法都不需要鉴权
+     * [*]
      */
     protected $noAuth = [];
     
