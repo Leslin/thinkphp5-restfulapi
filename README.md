@@ -105,32 +105,32 @@ PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVp
 
 - 路由设置 route\route.php
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/route.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1route.png)
 
 - Api类
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/api.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1api.png)
 
 - Oauth类
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/oauth.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1oauth.png)
 
 - v1/Token类
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/token.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1token.png)
 
 ### 截图
 ### 1、获取token传参
 
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test1.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1test1.png)
 
-### 1、获取token、刷新的token，过期时间，用户信息
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test2.png)
+### 2、获取token、刷新的token，过期时间，用户信息
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1test2.png)
 
 
 ### 3、传递token进行请求
 - 加密头规则：USERID base64_encode(appid:token:uid)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test3.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1test3.png)
 
 
 ## 快速创建一个restful控制器
