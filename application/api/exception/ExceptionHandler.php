@@ -30,7 +30,7 @@ class ExceptionHandler extends Handle
             $this->code = $e->code;
             $this->message = $e->message;
         } else {
-            if (config('app_debug')) {
+            if (config('app_debug')) {   //是否开启debug模式，异常交给父类异常处理，否则输出json格式错误
                 return parent::render($e);
             }
             $this->code = 500;
