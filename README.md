@@ -130,7 +130,7 @@ PS:拼接示例：USERID c25haWx5X3hjeF9uZXc6M0U1TjBtR3dGSTZjZ1BoNEpLdHY4eWQyOVp
 
 ### 3、传递token进行请求
 - 加密头规则：USERID base64_encode(appid:token:uid)
-![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/1test3.png)
+![](https://github.com/Leslin/thinkphp5-restfulapi/blob/master/screenshot/test4.png)
 
 
 ## 快速创建一个restful控制器
