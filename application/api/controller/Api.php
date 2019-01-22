@@ -42,9 +42,7 @@ class Api
 
 			return self::returnMsg(200,'success');
 		}
-		//配置不要鉴权的方法白名单
-		if(!in_array($this->request->controller().'/'.$this->request->action().'/'.strtolower($this->request->method()),config('allow_method'))){
-			//授权处理
+		if(!Oauth::match($this->noAuth)){
 			$oauth = app('app\api\controller\Oauth');   //tp5.1容器，直接绑定类到容器进行实例化
     		return $this->clientInfo = $oauth->authenticate();;
 		}
