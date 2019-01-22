@@ -78,6 +78,31 @@ class Oauth
     }
 
     /**
+     * 检测当前控制器和方法是否匹配传递的数组
+     *
+     * @param array $arr 需要验证权限的数组
+     * @return boolean
+     */
+    public static function match($arr = [])
+    {
+        $request = Request::instance();
+        $arr = is_array($arr) ? $arr : explode(',', $arr);
+        if (!$arr)
+        {
+            return false;
+        }
+        $arr = array_map('strtolower', $arr);
+        // 是否存在
+        if (in_array(strtolower($request->action()), $arr) || in_array('*', $arr))
+        {
+            return true;
+        }
+
+        // 没找到匹配
+        return false;
+    }
+
+    /**
      * 生成签名
      * _字符开头的变量不参与签名
      */
