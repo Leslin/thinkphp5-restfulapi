@@ -26,7 +26,7 @@ class ExceptionHandler extends Handle
     {   
         $this->statuscode = $this->code = 500;
 
-        if ($e instanceof BaseException) {
+        if ($e instanceof BaseException) {  //是否异常实例
             $this->code = $e->code;
             $this->message = $e->message;
         } else {
