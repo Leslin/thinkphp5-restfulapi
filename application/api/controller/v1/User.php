@@ -5,6 +5,8 @@ namespace app\api\controller\v1;
 use think\Controller;
 use think\Request;
 use app\api\controller\Api;
+use app\api\common\Page;
+use app\api\validate\ValidataCommon;
 
 class User extends Api
 {   
@@ -23,8 +25,12 @@ class User extends Api
      * @return \think\Response
      */
     public function index()
-    {      
-       dump($this->uid);
+    {  
+       //通用参数验证
+        ValidataCommon::validateCheck(['lng' => 'require', 'lat' => 'require'], $this->request->param('')); //参数验证
+        //通用分页
+        list($page, $size) = Page::getPage($this->request->param(''));
+        dump($this->uid);
     }
 
     /**
