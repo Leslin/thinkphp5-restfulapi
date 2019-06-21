@@ -5,7 +5,7 @@ use think\Request;
 use app\api\controller\Send;
 use app\api\controller\Oauth;
 use think\facade\Cache;
-
+use app\api\utils\wxBizDataCrypt;
 /**
  * 生成token
  */
@@ -53,6 +53,51 @@ class Token
 		} catch (Exception $e) {
 			return self::returnMsg(500,'fail',$e);
 		}
+	}
+
+	public function getOpenId($code = '',$encryptedData = '',$iv = '',$appInfo = [])
+	{	
+        $result = json_decode(file_get_contents("https://api.weixin.qq.com/sns/jscode2session?appid=" . $appInfo['wx_appid'] . "&secret=" . $appInfo['wx_appsercet'] . "&js_code=" . $code . "&grant_type=authorization_code"), true);
+		if(empty($result['session_key'])){
+			return $this->returnmsg(401,'获取token失败!'.$result['errmsg']);
+		}else{
+            $pc = new wxBizDataCrypt($appInfo['wx_appid'], $result['session_key']);
+            $data = $pc->decryptData($encryptedData, $iv); //解密用户基础信息
+            $data = json_decode($data, true);
+            if (!empty($data['openId'])) {
+                if (isset($data['unionId'])) { //含有unionid
+                    $is_unionid['is_unionid'] = true;
+                    $userInfo = WechatFans::get(['unionid' => $data['unionId']]); //按照unionid查找
+                    if(empty($userInfo)){
+                        $userInfo = WechatFans::get(['openid' => $data['openId']]); //按照openid查找
+                    }
+                } else {
+                    $is_unionid['is_unionid'] = false;
+                    $userInfo = WechatFans::get(['openid' => $data['openId']]); //按照openid查找
+                }
+                $userAdd['openid']     = $data['openId'];
+                $userAdd['unionid']    = isset($data['unionId']) ? $data['unionId'] : '';
+                $userAdd['nickname']   = $data['nickName'];
+                $userAdd['avatar']     = $data['avatarUrl'];
+                $userAdd['sex']        = $data['gender'];
+                $userAdd['province']   = $data['province'];
+                $userAdd['country']    = $data['country'];
+                $userAdd['updatetime'] = time();
+				if(empty($userInfo)){   //用户没有在fans表里面
+                    $userAdd['createtime'] = $userAdd['updatetime'];
+                    $userAdd['subscribe_scene'] = 'WEIXIN';
+                    $userAdd['source'] = 2;
+                    WechatFans::create($userAdd);  //插入到粉丝表
+				}else{
+					WechatFans::where('id',$userInfo['id'])->update($userAdd);
+                    $userAdd['uid'] = $userInfo['uid'];
+				}
+				return $userAdd;
+			}else{
+				return $this->returnmsg(401,'获取token失败!解析数据失败');
+			}
+		}
+
 	}
 
 	/**
