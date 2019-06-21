@@ -47,7 +47,7 @@ class Api
 
 			return self::returnMsg(200,'success');
 		}
-		if(!Oauth::match($this->noAuth)){
+		if(!Oauth::match($this->noAuth)){               //请求方法白名单
 			$oauth = app('app\api\controller\Oauth');   //tp5.1容器，直接绑定类到容器进行实例化
     		return $this->clientInfo = $oauth->authenticate();;
 		}
