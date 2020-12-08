@@ -5,7 +5,7 @@ ThinkPHP restfulapi
 
 基于ThinkPHP5.1* 基础上开发的一个简单的restful api ，带权限验证等
 
-> ThinkPHP5.1的运行环境要求PHPPHP5.6+以上。
+> ThinkPHP5.1的运行环境要求PHPPHP7.2+以上。
 
 详细开发文档参考 [ThinkPHP5完全开发手册](https://www.kancloud.cn/manual/thinkphp5_1/353946)
 
