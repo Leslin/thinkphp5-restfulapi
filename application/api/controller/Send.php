@@ -6,7 +6,6 @@ use think\Request;
 
 trait Send
 {
-
 	/**
 	 * 返回成功
 	 */

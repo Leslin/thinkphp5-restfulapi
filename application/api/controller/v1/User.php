@@ -30,7 +30,7 @@ class User extends Api
         ValidataCommon::validateCheck(['lng' => 'require', 'lat' => 'require'], $this->request->param('')); //参数验证
         //通用分页
         list($page, $size) = Page::getPage($this->request->param(''));
-        dump($this->uid);
+        echo($this->uid);
     }
 
     /**
