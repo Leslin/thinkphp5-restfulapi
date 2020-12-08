@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
+use think\Route;
 //一般路由规则，访问的url为：v1/address/1,对应的文件为Address类下的read方法
 Route::get(':version/address/:id','api/:version.user/address');
 
