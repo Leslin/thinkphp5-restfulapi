@@ -106,7 +106,7 @@ class Oauth
      * 生成签名
      * _字符开头的变量不参与签名
      */
-    public static function makeSign ($data = [],$app_secret = '')
+    public static function makeSign($data = [],$app_secret = '')
     {   
         unset($data['version']);
         unset($data['sign']);
