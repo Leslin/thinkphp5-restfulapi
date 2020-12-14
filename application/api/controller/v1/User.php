@@ -99,11 +99,4 @@ class User extends Api
     {
         echo "delete";
     }
-
-
-    public function address($id)
-    {
-        echo "address-";
-        echo $id;
-    }
 }
