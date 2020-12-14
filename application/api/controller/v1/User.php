@@ -17,7 +17,7 @@ class User extends Api
      * 所有方法都不需要鉴权
      * [*]
      */
-    protected $noAuth = [];
+    protected $noAuth = ['create'];
     
     /**
      * 显示资源列表
