@@ -19,7 +19,7 @@ class User extends Api
      */
     protected $noAuth = ['create'];
     
-    /**
+    /** 
      * 显示资源列表
      *
      * @return \think\Response
